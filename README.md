@@ -5,7 +5,7 @@
 
 Install [Python 3.x](https://www.python.org/)
 
-Note : You will need to install some extra modules as such you may want to create a python virtual environment for doing that I suggest reading of [Real python viertual environments](https://realpython.com/python-virtual-environments-a-primer/)  and [Python venv](https://docs.python.org/3/library/venv.html) 
+Note: You will need to install some extra modules. You may want to create a python virtual environment; to do that I suggest taking a look at [Real python viertual environments](https://realpython.com/python-virtual-environments-a-primer/) and [Python venv](https://docs.python.org/3/library/venv.html) 
 
 ## Required modules
 
@@ -16,9 +16,9 @@ Note : You will need to install some extra modules as such you may want to creat
 
 ## Assumptions/Requirements
 [Get the entity properties from Xray Cloud issue types]( https://developer.atlassian.com/cloud/jira/platform/rest/v3/?utm_source=%2Fcloud%2Fjira%2Fplatform%2Frest&utm_medium=302#api-rest-api-3-issuetype-issueTypeId-properties-propertyKey-get)
-- Assuming that migration to a cloud environment as been done using standard "export" and "import" of the XML instance or using [Cloud migration assistant](https://marketplace.atlassian.com/apps/1222010/jira-cloud-migration-assistant?hosting=server&tab=overview)
-  There is one important item that you need to validate, **you need to make sure that your Issue types are been recognized by Xray**. 
-  If you find in your instance reference to "Xray Test" Issue Type and other devivatives from it along side with the ones that you imported from server and if you don't see any functionalities of Xray in issues that you imported then **your imported issues are not recognized as Xray issues**.
+- Assuming that migration to a cloud environment has been done using standard "export" and "import" of the XML instance or using [Cloud migration assistant](https://marketplace.atlassian.com/apps/1222010/jira-cloud-migration-assistant?hosting=server&tab=overview)
+  There is one important item that you need to validate, **you need to make sure that your Issue types have been recognized by Xray**. 
+  If you find in your instance a reference to "Xray Test" Issue Type and other derivatives from it along with the ones that you imported from server, and if you don't see any functionalities of Xray in issues that you imported, then **your imported issues are not recognized as Xray issues**.
 
 
   To fix this you will need to :
@@ -39,8 +39,8 @@ Note : You will need to install some extra modules as such you may want to creat
           4)Perform a [Re-index](https://confluence.xpand-it.com/display/XRAYCLOUD/Project+Settings%3A+Re-Indexing). 
    
 
- - If you have migrated data to a cloud environment as been done using standard "export" and "import" of the XML instance or using [Cloud migration assistant](https://marketplace.atlassian.com/apps/1222010/jira-cloud-migration-assistant?hosting=server&tab=overview) 
- and you have not installed Xray then you will need to perform the below actions so that your imported issues are recognized as Xray Issue Types:
+ - If you have migrated data to a cloud environment using standard "export" and "import" of the XML instance or using [Cloud migration assistant](https://marketplace.atlassian.com/apps/1222010/jira-cloud-migration-assistant?hosting=server&tab=overview) 
+ and you have not installed Xray, then you will need to perform the below actions so that your imported issues are recognized as Xray Issue Types:
         
    1)Install Xray
        
@@ -52,34 +52,34 @@ Note : You will need to install some extra modules as such you may want to creat
 
    5)Perform a [Re-index](https://confluence.xpand-it.com/display/XRAYCLOUD/Project+Settings%3A+Re-Indexing). 
   
- - It may happen that the link type that was linking requirements to tests Onpremise is not recognized in cloud by Xray - makign the requirement coverage fail to provide the correct information. 
-  This happens because when the user installs Xray it will look for the existance of the link Type "Test" (with "tests" as outward descriptin and "is tested by" as inward description) if it finds it associates that link type with Xray if it doesn't find it it creates a new Link type with that referred name and associates this Link Type as the Xray Link Type for linking requirements to tests.
+ - It may happen that the link type that was linking requirements to tests Onpremise is not recognized in cloud by Xray - making the requirement coverage fail to provide the correct information. 
+  This happens because when the user installs Xray it will look for the existance of the link Type "Test" (with "tests" as outward descriptin and "is tested by" as inward description) if it finds it associates that link type with Xray, if it doesn't find this link Type, it creates a new Link type with that referred name and associates this Link Type as the Xray Link Type for linking requirements to tests.
   
      **If you didn't install Xray or migrated data to Cloud**
-      - Before Migrate rename Onpremise the respective link type to "Test" (with "tests" as outward descriptin and "is tested by" as inward description) 
-      - Make sure that a link type "Test" (with "tests" as outward descriptin and "is tested by" as inward description)  already exists before you install Xray.
+      - Before migrating, rename Onpremise the respective link type to "Test" (with "tests" as outward descriptin and "is tested by" as inward description) 
+      - Make sure that a link type "Test" (with "tests" as outward descriptin and "is tested by" as inward description) already exists before you install Xray.
   
      **If you already migrated and your link type is not recognized**
-        If you are on this position it means you will probably have two Link Types one called "Tests" and the other "Test", where "Tests" is the one that was migrated from Onpremise and its the one currently used to link requirements to Tests but its not recognized by Xray on CLoud.
+        If you are in this position it means you will probably have two Link Types one called "Tests" and the other "Test", where "Tests" is the one that was migrated from Onpremise and its the one currently used to link requirements to Tests but is not recognized by Xray on Cloud.
 
         - Delete the entry Test ( Tests - is tested by) - This should have been the one generated by Xray and no issues using it.
         - Rename the Link type "Tests" that was imported from OnPremise to the same name as the one deleted - Bare in mind this needs to be exactly the same (name, inward and outward)
-        - Go To healthcheck ( it should give a error saying its missing the Link Type)
+        - Go To healthcheck (it should give a error saying its missing the Link Type)
         - Click Reinstall
-      There is some cache associated with this as such you might have to wait until a hour to xray recognizes in full the Link Type. As such you might need to wait for a bit until the healthcheck gives you full green.
+      If there is some cache associated with, you might have to wait until a hour for Xray to recognize in full the Link Type. You might need to wait until the healthcheck gives you full green.
 
 
   
   
-- Pre conditions have been properly handled for been compatible with Atlassian Cloud.X-ray uses 'Pre-Condition' issue type On-Premise while in Cloud uses 'Precondition'. Issues need to be moved/update accordingly.
+- Pre conditions have been properly handled for being compatible with Atlassian Cloud.X-ray uses 'Pre-Condition' issue type On-Premise while in Cloud uses 'Precondition'. Issues need to be moved/update accordingly.
 - Projects in the scope of scripts have been [Re-indexed](https://confluence.xpand-it.com/display/XRAYCLOUD/Project+Settings%3A+Re-Indexing). 
-- The types of tests in Cloud musts contain all test types that will be sync ( Default are : Generic , Cucumber and Manual )
-- Test Status and Step Test Status need to be replicated or mapping need to be done in xray_variables.py
-- Issue Types that are handled by Xray need to be properly in Sync as when importing project Xray might not recognize On Premise issue Types ( Test , Test Plan, Test Set ) as Xray Issue Types.
+- The types of tests in Cloud must contain all test types that will be synched ( Default are : Generic , Cucumber and Manual )
+- Test Status and Step Test Status need to be replicated or mapped in xray_variables.py
+- Issue Types that are handled by Xray need to be properly in Sync because when importing the project, Xray might not recognize On Premise issue Types ( Test , Test Plan, Test Set ) as Xray Issue Types.
 - Enable "Create Inline Test Environments" in Project Test Environments if you are importing and want to have Test Environments migrated.
 - Disable "Fail all steps" configuration item.
 - If you are running a version of Xray above 4.0.0 be sure to set GLOBAL_XrayVersionIsObove4 to "Yes".This is important as it 4.0.0 contains breaking changes.
-- If running a version above 4.0 please update to the latest version of the plugin ( minumium above 4.1 ) 4.0.x has a bug in the rest api that can lead to errors in the "execution finish dates" for tests runs that went through a "reset of the execution".
+- If running a version above 4.0 please update to the latest version of the plugin ( minumium above 4.1 ) 4.0.x has a bug in the REST API that can lead to errors in the "execution finish dates" for tests runs that went through a "reset of the execution."
 
 
 
@@ -107,12 +107,11 @@ Note : You will need to install some extra modules as such you may want to creat
 
 - Attachments and Evidences
 
-If you run 'xray_synctestexecwithtests.py' without the flag "rerun" (that will delete all test associations and reassociate the test and there for recreate new test runs) attachments/evidences of Test Runs will be duplicated.
-This is due to limitation on the Jira api that cannot be resolved by this script at this moment.
+If you run 'xray_synctestexecwithtests.py' without the flag "rerun" (this will delete all test associations and reassociate the test by recreating new test runs) attachments/evidences of Test Runs will be duplicated.
+This is due to limitation on the Jira API that cannot be resolved by this script at this moment.
 
 - Time to migrate
-The import of data can take considerable time from **hours to days** to be completed depending on the configurations amount of data and types of tests. Manual tests and test runs associated take considerable more time to import due to the number of calls that are need
-to be made. You may want to consider to restrict what you want to import or to start by migrating the Xray information that is more pertinent to current day to day work and then to migrate the rest of past information in the days following the GoLive.
+The import of data can take considerable time from **hours to days** to be completed depending on the configurations, amount of data, and types of tests. Manual tests and test runs associated take considerably more time to import due to the number of calls that need to be made. You may want to consider to restrict what you want to import or to start by migrating the Xray information that is more relevant to current day to day work and then to migrate the rest of past information in the days following the GoLive.
 
 ## Limitations ( Cloud product diferences and GraphQL limits)
 
@@ -124,7 +123,7 @@ to be made. You may want to consider to restrict what you want to import or to s
 - Size of data inside a Action, Data, Expected Result
 8192 chars
 
--- Mimetypes - we are using mimetypes module and some filesnames are not known.We need to better handle it...for now not known are added as octet-stream
+-- Mimetypes - we are using mimetypes module and some filesnames are not known. We need to better handle it...for now not known are added as octet-stream
 
 
 ## Wish List
@@ -134,10 +133,10 @@ to be made. You may want to consider to restrict what you want to import or to s
 
 ## Logging
 
-- All scripts create a log file that follows their base names plust a time reference to when it was started..
-- For performances reasons changes are not commited "one" by "one" they are packed until they reach limit ('GLOBAL_maxMutationsForPack' in xray_variables.py) and commited when limit is achieved.
+- All scripts create a log file that follows their base names plus a time reference to when it was started..
+- For performance reasons, changes are not commited "one-by-one" they are packed until they reach limit ('GLOBAL_maxMutationsForPack' in xray_variables.py) and commited when the limit is achieved.
 
-  While information is been 'packed' the issues that are being processed are written to log. 
+  While information is been 'packed'the issues that are being processed are written in the log. 
   
   You can see when information is being commited when you see the following tags in the logs : '======= Persisting information in Cloud [START] =========' and '======= Persisting information in Cloud [END] ========='
   
@@ -145,7 +144,7 @@ to be made. You may want to consider to restrict what you want to import or to s
   
   
 ## Auxiliary Files
-xray_variables.py - Contains some global information that is then use in scripts. It includes :
+xray_variables.py - Contains some global information that is then used in scripts. This includes :
 
 - credentials 
 - urls
@@ -175,9 +174,9 @@ optional arguments:
 ```
 _Notes_
 
-- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerable.
+- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this file can increase considerably.
 - The list of exported issues processed can be used as input (as a list of issues to ignore) for this script.
-- You can rerun multiple times the same script over the same scope of issues (however if there are any change in the specification of the tests and they are already added in a test execution then standard [Data Consistency](https://confluence.xpand-it.com/display/XRAYCLOUD/Test+Runs#TestRuns-Dataconsistency) rules apply) 
+- You can rerun multiple times the same script over the same scope of issues (however if there are any change in the specification of the tests and they are already added in a test execution, then standard [Data Consistency](https://confluence.xpand-it.com/display/XRAYCLOUD/Test+Runs#TestRuns-Dataconsistency) rules apply) 
 
 
 
@@ -198,9 +197,9 @@ optional arguments:
 
 _Notes_
 
-- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerable.
+- Log information is sent to console and to a log file ( same name as script plus .log ). Log is appended to file, this file can increase considerably.
 - The list of exported issues processed can be used as input (as a list of issues to ignore) for this script.
-- You can rerun multiple times the same script over the same scope of issues (however if there are any change in the specification of the tests and they are already added in a test execution then standard [Data Consistency](https://confluence.xpand-it.com/display/XRAYCLOUD/Test+Runs#TestRuns-Dataconsistency) rules apply) 
+- You can rerun the same script multiple times over the same scope of issues (however if there are any change in the specification of the tests and they are already added in a test execution then standard [Data Consistency](https://confluence.xpand-it.com/display/XRAYCLOUD/Test+Runs#TestRuns-Dataconsistency) rules apply) 
 
 **xray_syncManualTestsDefinitions.py**
 
@@ -212,15 +211,15 @@ Manual Test definitions Syncronizer
 
 optional arguments:
   -h, --help      show this help message and exit
-  -ignore IGNORE  Pass as input a list of onpremise keys, to be ignored (Important: Multiple reruns in same scope of issues will result in duplicated steps
+  -ignore IGNORE  Pass as input a list of on-premise keys, to be ignored (Important: Multiple reruns in same scope of issues will result in duplicated steps
                   for tests)
-  -export EXPORT  Export list of processed OnPremisse tests ids (default: no information will be exported). This is particularly important as multiple
-                  reruns in same scope of issues will result in duplicated steps for tests
+  -export EXPORT  Export list of processed on-premise tests ids (default: no information will be exported). This is particularly important as multiple
+                  reruns in same scope of issues will result in duplicated steps for tests.
 ```
 
 _Notes_
 
-- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerable.
+- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this file can increase considerably.
 - The list of exported issues processed can be used as input (as a list of issues to ignore) for this script.
 - If you want to rerun (run the over a scope of issues that were importer before ) you need to use the correct flag. Please note that tests that were already added in a test execution then standard [Data Consistency](https://confluence.xpand-it.com/display/XRAYCLOUD/Test+Runs#TestRuns-Dataconsistency) rules apply
 
@@ -234,13 +233,13 @@ Cucumber test definition Syncronizer
 
 optional arguments:
   -h, --help      show this help message and exit
-  -ignore IGNORE  Pass as input a list of onpremise keys, to be ignored (default: will try to get test defined in the JQL query).
+  -ignore IGNORE  Pass as input a list of on-premise keys, to be ignored (default: will try to get test defined in the JQL query).
   -export EXPORT  Export list of issues processed (default: information is logged though the log file but no file is create).
 ```
 
 _Notes_
 
-- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerable.
+- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerably.
 - The list of exported issues processed can be used as input (as a list of issues to ignore) for this script.
 - If you want to rerun (run the over a scope of issues that were importer before ) you need to use the correct flag. Please note that tests that were already added in a test execution then standard [Data Consistency](https://confluence.xpand-it.com/display/XRAYCLOUD/Test+Runs#TestRuns-Dataconsistency) rules apply
 - This script is not necessary to run if you are planning to execute xray_syncTestExecWithTests.py has this last one also includes adding the Test Execs definitions.
@@ -261,9 +260,9 @@ optional arguments:
 
 _Notes_
 
-- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerable.
+- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerably.
 - The list of exported issues processed can be used as input (as a list of issues to ignore) for this script.
-- You can rerun multiple times the same script over the same scope of issues (however if there are any change in the specification of the tests and they are already added in a test execution then standard [Data Consistency](https://confluence.xpand-it.com/display/XRAYCLOUD/Test+Runs#TestRuns-Dataconsistency) rules apply)
+- You can rerun the same script multiple times over the same scope of issues (however if there are any change in the specification of the tests and they are already added in a test execution then standard [Data Consistency](https://confluence.xpand-it.com/display/XRAYCLOUD/Test+Runs#TestRuns-Dataconsistency) rules apply)
 
 
 
@@ -278,17 +277,17 @@ Test Plan and Test Syncronizer
 
 optional arguments:
   -h, --help      show this help message and exit
-  -ignore IGNORE  Pass as input a list of onpremise issues keys, to be ignored (default: will try to get test defined in the JQL query). The format should
+  -ignore IGNORE  Pass as input a list of on-premise issues keys, to be ignored (default: will try to get test defined in the JQL query). The format should
                   be TESTPLANKEY:TESTKEY
   -export EXPORT  Export list of issues processed (default: information is logged though the log file but no file is created). Format can then be used as
-                  input of this script
+                  input for this script
                   
 ```
 _Notes_
 
-- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerable.
+- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this file can increase considerably.
 - The list of exported issues processed can be used as input (as a list of issues to ignore) for this script.
-- You can rerun multiple times the same script over the same scope of issues.
+- You can rerun the same script multiple times over the same scope of issues.
 
 
 
@@ -303,16 +302,16 @@ Test Plan and Test Syncronizer
 
 optional arguments:
   -h, --help      show this help message and exit
-  -ignore IGNORE  Pass as input a list of onpremise issues keys, to be ignored (default: will try to get test defined in the JQL query). The format should
+  -ignore IGNORE  Pass as input a list of on-premise issues keys, to be ignored (default: will try to get test defined in the JQL query). The format should
                   be TESTPLANKEY:TESTKEY
   -export EXPORT  Export list of issues processed (default: information is logged though the log file but no file is created). Format can then be used as
-                  input of this script
+                  input for this script. 
 ```
 
 
 _Notes_
 
-- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerable.
+- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this file can increase considerably.
 - The list of exported issues processed can be used as input (as a list of issues to ignore) for this script.
 - You can rerun multiple times the same script over the same scope of issues.
 
@@ -328,17 +327,17 @@ Test Plan and Test Syncronizer
 
 optional arguments:
   -h, --help      show this help message and exit
-  -ignore IGNORE  Pass as input a list of onpremise issues keys, to be ignored (default: will try to get test defined in the JQL query). The format should
+  -ignore IGNORE  Pass as input a list of on-premise issues keys, to be ignored (default: will try to get test defined in the JQL query). The format should
                   be TESTPLANKEY:TESTKEY
   -export EXPORT  Export list of issues processed (default: information is logged though the log file but no file is created). Format can then be used as
-                  input of this script
+                  input of this script.
 ```
 
 _Notes_
 
-- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this fiel can increase considerable.
+- Log information is sent to console and to a log file ( same name as script plus .log ) . Log is appended to file, this file can increase considerably.
 - The list of exported issues processed can be used as input (as a list of issues to ignore) for this script.
-- You can rerun multiple times the same script over the same scope of issues.
+- You can rerun the same script multiple times over the same scope of issues.
 
 **xray_syncTestExecWithTests.py**
 
@@ -352,7 +351,7 @@ Test Execution Syncronizer
 optional arguments:
   -h, --help            show this help message and exit
   -manualTestlist MANUALTESTLIST
-                        Pass as input the list of test keys, for whom step information will be retrieved (default: will try to get steps for all tests).
+                        Pass the list of test keys  as input, for whom step information will be retrieved (default: will try to get steps for all tests).
   -export EXPORT        Export list of Test Execs fully processed (Important: Only Test Exec that were fully importorted are loogged in this file.If a Test
                         Exec is not present in the file its as not been processed or is in unstable situation.
   -ignore IGNORE        Pass as input a list of onpremise keys, to be ignored (default: will try to get test defined in the JQL query).
@@ -364,14 +363,14 @@ optional arguments:
   -se, --stepevidences  Do not include steps evidences (default: will include evidences).
   -st, --stepstatus     Do not include steps status (default: will include status).
   -s, --steps           Do not include steps comments (default: will include comments).
-  -rerun                Used when we want to update existing information.Existing test runs will be deleted as part of this.
+  -rerun                Used when we want to update existing information. Existing test runs will be deleted as part of this.
 
 ```
 
 _Notes_
 
-- This script can take a considerable amount of time to run if your instance contains a huge number of test runs associated with Manual tests. When migrating consider to only include global results of the test runs instead of the all detail of the test steps. 
-- There is a limit of 60 calls to the GraphQL as such evaluate with carefull the number of scripts you run in parallel as it might backfire and they can start stalling each other.
+- This script can take a considerable amount of time to run if your instance contains a huge number of test runs associated with Manual tests. When migrating consider to only include global results of the test runs instead of all the details of the test steps. 
+- There is a limit of 60 calls for GraphQL, because of this, you should carefully evaluate the number of scripts you run in parallel as it might backfire and they can start stalling each other.
 - Start dates, Execution dates as well assignee and executer are preserved. The time that the test was added to the Execution is not.
 
 
@@ -379,18 +378,18 @@ _Notes_
 
 ### Proposed order
 
-1) Run initially the scripts that provide the descriptions of Tests ( Cucumber, Generic , Manual ) and PreConditions (Manual test will take considerable more time than any other of the scripts)
+1) Initially, run the scripts that provide the descriptions of Tests ( Cucumber, Generic , Manual ) and PreConditions (Manual tests will take considerably more time than any other of the scripts)
 2) Run the scripts that link Pre Conditions with Tests
 3) Run the scripts that link Plans and Sets with Tests
 4) Run the scripts that recreate the Repository and the plan folders
 5) Run the scripts that link Plans with Executions.
-6) Run the script that adds Test Execution details and syncs with associated tests ( creating the associated test runs).
+6) Run the script that adds Test Execution details and syncs with associated tests (creating the associated test runs).
 
 ## Others
-- Do not run more than 3 in parallel, there is a limit of 60 calls per minute to the Xray Cloud GraphQL API and to many scripts in parallel may leed to having them stalling each other.
-- There are few set of limits for the Cloud-GraphQL (size of body, unstructured fields, Action, data and expected result). Before migrate consider to work out your data on server so that this will not be a problem.
+- Do not run more than 3 in parallel, there is a limit of 60 calls per minute for the Xray Cloud GraphQL API and running many scripts in parallel may lead to having them stall each other.
+- There are a few set of limits for the Cloud-GraphQL (size of body, unstructured fields, Action, data and expected result). Before migrating, consider to working out your data on server so that this will not be a problem.
 - The scripts provide statistics about times it takes to perform activities - study them to better plan the Go Live.
-- Manual tests and executions associated with it take considerable more time than other activities. If you have a great ammout of these you should plan carefully the migration as if you have several thousands it may take hours to days to achive the total migration.
+- Manual tests and executions associated with it take considerable more time than other activities. If you have a large amount of manual tests you should carefully plan their migration. If you have several thousands it may take hours or days to achive the total migration.
 
 
 
